@@ -34,6 +34,7 @@ const availableVersions = fs
     return;
   }
 
+  // Earlier versions limit the lenght of scoreboard names to 16 characters
   const concat = format < 8;
 
   const data = JSON.parse(
@@ -50,7 +51,7 @@ const availableVersions = fs
 
   for (const data of Object.values(items)) {
     let types = ["u", "c", "b", "p", "d"] as Types[];
-    // add mined if item is a block
+    // add "mined" if item is a block
     if (blockIds.includes(data.text_id)) types.unshift("m");
     for (const type of types) {
       createScript += `${commandGenerator.createCmd(
@@ -68,7 +69,7 @@ const availableVersions = fs
   }
 
   for (const data of Object.values(entities)) {
-    // Remove strange values
+    // remove unexpected values
     if (!data.name.includes("~")) {
       for (const type of ["k", "kb"] as const) {
         createScript += `${commandGenerator.createCmd(
@@ -87,7 +88,7 @@ const availableVersions = fs
   }
 
   for (const [id, data] of Object.entries(stats)) {
-    // Remove values that will throw an error
+    // remove unexpected values
     if (
       id.includes("minecraft.") &&
       !id.includes("_fished") &&

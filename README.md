@@ -2,6 +2,33 @@
 
 A tool to generate scoreboard objectives for Minecraft.
 
+## Compiling Scripts
+
+In order to run this script you need to have [NodeJS](https://nodejs.org/) installed on your system
+
+### Cloning
+
+```shell
+git clone https://github.com/cohenerickson/Every-Scoreboard
+cd Every-Scoreboard
+```
+
+### Installing Dependencies
+
+```shell
+npm install
+```
+
+### Compiling
+
+Run the following command and follow the steps
+
+```shell
+npm start
+```
+
+Datapacks can be found in the `./out` directory after compilation
+
 ## Naming
 
 - `m-<block>` Mined blocks
@@ -20,6 +47,6 @@ Use [Burger](https://github.com/Pokechu22/Burger) to extract data files for {ver
 
 Move the resulting {version}.json file into the ./data directory
 
-```bash
+```shell
 python munch.py --download {version} --output ./{version}.json --toppings blocks,entities,items,stats
 ```

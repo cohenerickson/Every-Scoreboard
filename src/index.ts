@@ -17,7 +17,6 @@ const availableVersions = fs
     type: "select",
     name: "version",
     message: "Pick a version",
-    // @ts-ignore
     choices: sort(availableVersions)
       .reverse()
       .map((x) => ({

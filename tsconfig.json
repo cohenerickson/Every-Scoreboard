@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "target": "ESNext",
+    "module": "es2022",
+    "moduleResolution": "node",
+    "strict": true,
+    "types": ["node"],
+    "baseUrl": "./",
+    "outDir": "./dist"
+  }
+}

@@ -29,6 +29,22 @@ npm start
 
 Datapacks can be found in the `./out` directory after compilation
 
+## Creating Objectives
+
+In order to create the scoreboard objectives, run this command in your Minecraft console
+
+```mcfunction
+/function every-scoreboard-{version}:create
+```
+
+If the function doesn't show up you may need to run `/reload` in order to refresh the datapack list
+
+In order to delete the objectives run this command
+
+```mcfunction
+/function every-scoreboard-{version}:delete
+```
+
 ## Naming
 
 - `m-<block>` Mined blocks

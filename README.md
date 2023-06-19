@@ -2,6 +2,8 @@
 
 A tool to generate scoreboard objectives for Minecraft.
 
+Inspired by [every-scoreboard](https://github.com/samipourquoi/every-scoreboard) and updated to support the latest versions
+
 ## Compiling Scripts
 
 In order to run this script you need to have [NodeJS](https://nodejs.org/) installed on your system

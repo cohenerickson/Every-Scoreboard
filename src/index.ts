@@ -107,11 +107,18 @@ const availableVersions = fs
     }
   }
 
-  const dir = path.join(cwd, "./out", `./every-scoreboard-${version}`);
-  const functionsDir = path.join(
-    dir,
-    `./data/every-scoreboard-${version}/functions`
+  createScript += fs.readFileSync(
+    path.join(cwd, "./src/functions/create.mcfunction"),
+    "utf-8"
   );
+  deleteScript += fs.readFileSync(
+    path.join(cwd, "./src/functions/delete.mcfunction"),
+    "utf-8"
+  );
+
+  const dir = path.join(cwd, "./out", `./every-scoreboard-${version}`);
+  const functionsDir = path.join(dir, `./data/every-scoreboard/functions`);
+  const tagsDir = path.join(dir, `./data/minecraft/tags/functions`);
 
   write(
     path.join(dir, "./pack.mcmeta"),
@@ -126,8 +133,22 @@ const availableVersions = fs
       2
     )
   );
+  write(
+    path.join(tagsDir, "./tick.json"),
+    JSON.stringify(
+      {
+        values: ["every-scoreboard:tick"]
+      },
+      null,
+      2
+    )
+  );
   write(path.join(functionsDir, `./create.mcfunction`), createScript);
   write(path.join(functionsDir, `./delete.mcfunction`), deleteScript);
+  write(
+    path.join(functionsDir, `./tick.mcfunction`),
+    fs.readFileSync(path.join(cwd, "./src/functions/tick.mcfunction"), "utf-8")
+  );
 
   console.log(
     colors.green(colors.bold(`Generated out/every-scoreboard-${version}`))

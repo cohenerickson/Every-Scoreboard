@@ -36,7 +36,7 @@ Datapacks can be found in the `./out` directory after compilation
 In order to create the scoreboard objectives, run this command in your Minecraft console
 
 ```
-/function every-scoreboard-{version}:create
+/function every-scoreboard:create
 ```
 
 If the function doesn't show up you may need to run `/reload` in order to refresh the datapack list
@@ -44,7 +44,7 @@ If the function doesn't show up you may need to run `/reload` in order to refres
 In order to delete the objectives run this command
 
 ```
-/function every-scoreboard-{version}:delete
+/function every-scoreboard:delete
 ```
 
 ## Naming

@@ -1,4 +1,5 @@
 import * as commandGenerator from "./commandGenerator";
+import archiver from "archiver";
 import colors from "colors/safe";
 import fs from "node:fs";
 import path from "node:path";
@@ -171,14 +172,29 @@ const availableVersions = fs
       2
     )
   );
-  
+
   write(path.join(functionsDir, `./create.mcfunction`), createScript);
   write(path.join(functionsDir, `./delete.mcfunction`), deleteScript);
   write(path.join(functionsDir, `./tick.mcfunction`), tickScript);
 
-  console.log(
-    colors.green(colors.bold(`Generated out/every-scoreboard-${version}`))
-  );
+  const output = fs.createWriteStream(`${dir}.zip`);
+  const archive = archiver("zip", {
+    zlib: { level: 9 }
+  });
+
+  archive.pipe(output);
+
+  output.on("finish", () => {
+    fs.rmSync(dir, { recursive: true });
+
+    console.log(
+      colors.green(colors.bold(`Generated out/every-scoreboard-${version}.zip`))
+    );
+  });
+
+  archive.directory(dir, false);
+
+  await archive.finalize();
 })();
 
 function write(fileName: string, content: string): void {

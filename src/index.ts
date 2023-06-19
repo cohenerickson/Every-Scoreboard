@@ -42,6 +42,7 @@ const availableVersions = fs
 
   let createScript = "";
   let deleteScript = "";
+  let tickScript = "";
 
   const blockIds: string[] = data[0].blocks.ordered_blocks;
   const items: { [key: string]: Item } = data[0].items.item;
@@ -107,14 +108,31 @@ const availableVersions = fs
     }
   }
 
-  createScript += fs.readFileSync(
-    path.join(cwd, "./src/functions/create.mcfunction"),
-    "utf-8"
-  );
-  deleteScript += fs.readFileSync(
-    path.join(cwd, "./src/functions/delete.mcfunction"),
-    "utf-8"
-  );
+  for (const tool of ["Shovel", "Pickaxe", "Axe", "Hoe", "Sword"]) {
+    createScript += `scoreboard objectives add u-${tool.toLowerCase()} dummy "Used ${tool}"\n`;
+
+    for (const type of [
+      "wooden",
+      "stone",
+      "iron",
+      "golden",
+      "diamond",
+      "netherite"
+    ]) {
+      createScript += `scoreboard objectives add zu-${type.charAt(
+        0
+      )}${tool.toLowerCase()} minecraft.used:minecraft.${type}_${tool.toLowerCase()}\n`;
+      deleteScript += `scoreboard objectives remove zu-${type.charAt(
+        0
+      )}${tool.toLowerCase()}\n`;
+      tickScript += `execute as @a run scoreboard players operation @s u-${tool.toLowerCase()} += @s zu-${type.charAt(
+        0
+      )}${tool.toLowerCase()}\n`;
+      tickScript += `scoreboard players reset @a zu-${type.charAt(
+        0
+      )}${tool.toLowerCase()}\n`;
+    }
+  }
 
   const dir = path.join(cwd, "./out", `./every-scoreboard-${version}`);
   const functionsDir = path.join(dir, `./data/every-scoreboard/functions`);
@@ -143,12 +161,20 @@ const availableVersions = fs
       2
     )
   );
+  write(
+    path.join(tagsDir, "./load.json"),
+    JSON.stringify(
+      {
+        values: ["every-scoreboard:create"]
+      },
+      null,
+      2
+    )
+  );
+  
   write(path.join(functionsDir, `./create.mcfunction`), createScript);
   write(path.join(functionsDir, `./delete.mcfunction`), deleteScript);
-  write(
-    path.join(functionsDir, `./tick.mcfunction`),
-    fs.readFileSync(path.join(cwd, "./src/functions/tick.mcfunction"), "utf-8")
-  );
+  write(path.join(functionsDir, `./tick.mcfunction`), tickScript);
 
   console.log(
     colors.green(colors.bold(`Generated out/every-scoreboard-${version}`))

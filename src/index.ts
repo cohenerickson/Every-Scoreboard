@@ -27,7 +27,8 @@ const availableVersions = fs
     initial: 0
   });
 
-  const format = packFormat(version, "data");
+  // temporary fix for 1.21
+  const format = version === "1.21" ? 48 : packFormat(version, "data");
 
   if (!format) {
     console.log(colors.red(colors.bold("Unable to parse pack format")));
@@ -136,15 +137,21 @@ const availableVersions = fs
   }
 
   const dir = path.join(cwd, "./out", `./every-scoreboard-${version}`);
-  const functionsDir = path.join(dir, `./data/every-scoreboard/functions`);
-  const tagsDir = path.join(dir, `./data/minecraft/tags/functions`);
+  const functionsDir = path.join(
+    dir,
+    `./data/every-scoreboard/function${format < 48 ? "s" : ""}`
+  );
+  const tagsDir = path.join(
+    dir,
+    `./data/minecraft/tags/function${format < 48 ? "s" : ""}`
+  );
 
   write(
     path.join(dir, "./pack.mcmeta"),
     JSON.stringify(
       {
         pack: {
-          description: `Every scoreboard, for Minecraft ${version}!`,
+          description: `Every Scoreboard, for Minecraft ${version}!`,
           pack_format: format
         }
       },

@@ -2017,6 +2017,10 @@
                     "numeric_id": 212,
                     "text_id": "blue_wool"
                 },
+                "bolt_armor_trim_smithing_template": {
+                    "display_name": "Bolt Armor Trim",
+                    "text_id": "bolt_armor_trim_smithing_template"
+                },
                 "bone": {
                     "class": "cmt",
                     "display_name": "Bone",
@@ -2100,6 +2104,10 @@
                     "max_stack_size": 64,
                     "numeric_id": 852,
                     "text_id": "bread"
+                },
+                "breeze_rod": {
+                    "display_name": "Breeze Rod",
+                    "text_id": "breeze_rod"
                 },
                 "breeze_spawn_egg": {
                     "class": "cod",
@@ -4497,6 +4505,14 @@
                     "numeric_id": 795,
                     "text_id": "flint_and_steel"
                 },
+                "flow_armor_trim_smithing_template": {
+                    "display_name": "Flow Armor Trim",
+                    "text_id": "flow_armor_trim_smithing_template"
+                },
+                "flow_banner_pattern": {
+                    "display_name": "Banner Pattern",
+                    "text_id": "flow_banner_pattern"
+                },
                 "flower_banner_pattern": {
                     "class": "ckp",
                     "display_name": "Banner Pattern",
@@ -5084,6 +5100,10 @@
                     "max_stack_size": 64,
                     "numeric_id": 849,
                     "text_id": "gunpowder"
+                },
+                "guster_banner_pattern": {
+                    "display_name": "Banner Pattern",
+                    "text_id": "guster_banner_pattern"
                 },
                 "hanging_roots": {
                     "display_name": "Hanging Roots",
@@ -6103,6 +6123,10 @@
                     "numeric_id": 1184,
                     "text_id": "loom"
                 },
+                "mace": {
+                    "display_name": "Mace",
+                    "text_id": "mace"
+                },
                 "magenta_banner": {
                     "class": "cko",
                     "display_name": "Magenta Banner",
@@ -6621,6 +6645,14 @@
                     "numeric_id": 1164,
                     "text_id": "music_disc_chirp"
                 },
+                "music_disc_creator": {
+                    "display_name": "Music Disc",
+                    "text_id": "music_disc_creator"
+                },
+                "music_disc_creator_music_box": {
+                    "display_name": "Music Disc",
+                    "text_id": "music_disc_creator_music_box"
+                },
                 "music_disc_far": {
                     "class": "cnq",
                     "display_name": "Music Disc",
@@ -6660,6 +6692,10 @@
                     "max_stack_size": 1,
                     "numeric_id": 1176,
                     "text_id": "music_disc_pigstep"
+                },
+                "music_disc_precipice": {
+                    "display_name": "Music Disc",
+                    "text_id": "music_disc_precipice"
                 },
                 "music_disc_relic": {
                     "class": "cnq",
@@ -7089,6 +7125,14 @@
                     "max_stack_size": 64,
                     "numeric_id": 1251,
                     "text_id": "ochre_froglight"
+                },
+                "ominous_bottle": {
+                    "display_name": "Ominous Bottle",
+                    "text_id": "ominous_bottle"
+                },
+                "ominous_trial_key": {
+                    "display_name": "Ominous Trial Key",
+                    "text_id": "ominous_trial_key"
                 },
                 "orange_banner": {
                     "class": "cko",
@@ -10553,6 +10597,11 @@
                     "max_stack_size": 64,
                     "numeric_id": 1261,
                     "text_id": "wild_armor_trim_smithing_template"
+                },
+                "wind_charge": {
+                    
+                    "display_name": "Wind Charge",
+                    "text_id": "wind_charge"
                 },
                 "witch_spawn_egg": {
                     "class": "cod",
